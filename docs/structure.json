@@ -1,0 +1,59 @@
+{
+  "docs": [
+    {
+      "name": "getting-started",
+      "displayName": "📖 入门指南",
+      "fileCount": 1,
+      "totalWords": 380,
+      "lastUpdated": "2026-03-16",
+      "files": [
+        {
+          "name": "welcome.md",
+          "displayName": "欢迎",
+          "path": "getting-started/welcome.md"
+        }
+      ]
+    },
+    {
+      "name": "basic-theory",
+      "displayName": "🔮 基础理论",
+      "fileCount": 0,
+      "totalWords": 0,
+      "lastUpdated": "-",
+      "files": []
+    },
+    {
+      "name": "card-meanings",
+      "displayName": "🃏 牌义解读",
+      "fileCount": 0,
+      "totalWords": 0,
+      "lastUpdated": "-",
+      "files": []
+    },
+    {
+      "name": "techniques",
+      "displayName": "⚡ 技法教程",
+      "fileCount": 0,
+      "totalWords": 0,
+      "lastUpdated": "-",
+      "files": []
+    },
+    {
+      "name": "case-studies",
+      "displayName": "📝 案例分析",
+      "fileCount": 0,
+      "totalWords": 0,
+      "lastUpdated": "-",
+      "files": []
+    },
+    {
+      "name": "course-materials",
+      "displayName": "🎓 课程资料",
+      "fileCount": 0,
+      "totalWords": 0,
+      "lastUpdated": "-",
+      "files": []
+    }
+  ],
+  "lastBuild": "2026-03-16T06:00:00+08:00"
+}
