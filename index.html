@@ -16,89 +16,119 @@
         
         /* 左侧导航 */
         .sidebar {
-            width: 260px;
+            width: var(--sidebar-width, 260px);
+            min-width: 180px;
+            max-width: 400px;
             background: #fff;
             border-right: 1px solid #eaeaea;
             padding: 20px 0;
             position: fixed;
             height: 100vh;
             overflow-y: auto;
+            overflow-x: hidden;
+            transition: width 0.1s ease;
         }
         .sidebar-header {
-            padding: 0 20px 20px;
+            padding: 0 16px 16px;
             border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            background: #fff;
         }
-        .sidebar-header h1 { font-size: 16px; color: #2c3e50; }
+        .sidebar-header h1 { font-size: 15px; color: #2c3e50; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
         .nav-tree { list-style: none; padding: 10px 0; }
         .nav-item { margin: 2px 0; }
         
         .nav-folder {
             cursor: pointer;
-            padding: 8px 16px;
+            padding: 8px 14px;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 14px;
+            font-size: 13px;
             color: #444;
             border-radius: 6px;
-            margin: 2px 8px;
+            margin: 2px 6px;
             transition: background 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .nav-folder:hover { background: #f5f5f5; }
         .nav-folder.active { background: #e8f4fc; color: #1a73e8; }
-        .nav-folder .arrow { font-size: 10px; width: 12px; }
-        .nav-folder .name { flex: 1; }
+        .nav-folder .arrow { font-size: 10px; width: 12px; flex-shrink: 0; }
+        .nav-folder .name { flex: 1; overflow: hidden; text-overflow: ellipsis; }
         
         .nav-files {
             list-style: none;
-            padding-left: 24px;
+            padding-left: 22px;
             display: none;
         }
         .nav-files.open { display: block; }
         
         .nav-file {
             cursor: pointer;
-            padding: 6px 16px;
+            padding: 6px 14px;
             font-size: 13px;
             color: #555;
             border-radius: 6px;
-            margin: 2px 8px;
+            margin: 2px 6px;
             transition: background 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .nav-file:hover { background: #f5f5f5; }
         .nav-file.active { background: #e8f4fc; color: #1a73e8; }
         
+        /* 拖拽调整器 */
+        .resizer {
+            width: 6px;
+            cursor: col-resize;
+            position: fixed;
+            left: var(--sidebar-width, 260px);
+            top: 0;
+            height: 100vh;
+            z-index: 100;
+            transition: background 0.2s;
+        }
+        .resizer:hover, .resizer.resizing {
+            background: #1a73e8;
+        }
+        
         /* 右侧内容 */
         .main-content {
             flex: 1;
-            margin-left: 260px;
-            padding: 40px 50px;
+            margin-left: var(--sidebar-width, 260px);
+            padding: 30px 40px;
+            min-width: 0;
+            transition: margin-left 0.1s ease;
         }
         .content-wrapper {
             background: #fff;
-            padding: 40px;
+            padding: 35px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            max-width: 850px;
+            max-width: 100%;
         }
         
         /* Markdown 样式 */
         .markdown-body h1 {
-            font-size: 26px;
-            margin-bottom: 20px;
+            font-size: 24px;
+            margin-bottom: 18px;
             padding-bottom: 12px;
             border-bottom: 2px solid #eee;
             color: #2c3e50;
         }
-        .markdown-body h2 { font-size: 20px; margin: 25px 0 12px; color: #2c3e50; }
-        .markdown-body h3 { font-size: 17px; margin: 20px 0 10px; color: #34495e; }
-        .markdown-body p { margin-bottom: 15px; }
-        .markdown-body ul, .markdown-body ol { margin: 15px 0; padding-left: 25px; }
+        .markdown-body h2 { font-size: 19px; margin: 22px 0 10px; color: #2c3e50; }
+        .markdown-body h3 { font-size: 16px; margin: 18px 0 8px; color: #34495e; }
+        .markdown-body p { margin-bottom: 14px; }
+        .markdown-body ul, .markdown-body ol { margin: 14px 0; padding-left: 24px; }
         .markdown-body li { margin: 6px 0; }
         .markdown-body a { color: #1a73e8; text-decoration: none; }
         .markdown-body a:hover { text-decoration: underline; }
-        .markdown-body img { max-width: 100%; border-radius: 8px; margin: 20px 0; }
+        .markdown-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 18px 0; }
         .markdown-body code {
             background: #f5f5f5;
             padding: 2px 6px;
@@ -109,49 +139,72 @@
         .markdown-body pre {
             background: #2d2d2d;
             color: #f8f8f2;
-            padding: 16px;
+            padding: 14px;
             border-radius: 8px;
             overflow-x: auto;
-            margin: 16px 0;
+            margin: 14px 0;
         }
         .markdown-body pre code { background: none; padding: 0; }
+        .markdown-body table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+        .markdown-body th, .markdown-body td { border: 1px solid #eaeaea; padding: 10px 12px; text-align: left; }
+        .markdown-body th { background: #f8f9fa; font-weight: 600; }
+        .markdown-body tr:nth-child(even) { background: #fafafa; }
         
         /* 欢迎页 */
         .welcome { text-align: center; padding: 40px 20px; }
-        .welcome h1 { border: none; font-size: 28px; }
-        .welcome-icon { font-size: 48px; margin-bottom: 16px; }
+        .welcome h1 { border: none; font-size: 26px; }
+        .welcome-icon { font-size: 44px; margin-bottom: 14px; }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .sidebar { width: 220px !important; }
+            .main-content { margin-left: 220px !important; padding: 20px 25px; }
+            .resizer { display: none; }
+            .content-wrapper { padding: 25px; }
+        }
+        @media (max-width: 480px) {
+            .sidebar { width: 100% !important; position: relative; height: auto; border-right: none; border-bottom: 1px solid #eaeaea; }
+            .main-content { margin-left: 0 !important; }
+            .resizer { display: none; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h1>📚 格林塔罗知识库</h1>
             </div>
             <ul class="nav-tree" id="navTree"></ul>
         </aside>
-        <main class="main-content">
+        <div class="resizer" id="resizer"></div>
+        <main class="main-content" id="mainContent">
             <div class="content-wrapper" id="content">
                 <div class="welcome">
                     <div class="welcome-icon">📋</div>
                     <h1>欢迎</h1>
                     <p>请点击左侧导航浏览文档</p>
+                    <p style="color:#999;font-size:13px;margin-top:20px;">💡 拖动左侧边缘可调整导航栏宽度</p>
                 </div>
             </div>
         </main>
     </div>
 
     <script>
-        // 文档结构（由构建脚本生成）
+        // 文档结构
         const DOCS = {"folders":[{"name":"docs","displayName":"文档","files":[{"name":"欢迎.md","displayName":"欢迎","path":"docs/欢迎.md"}]}]};
         const IMAGE_BASE = 'https://book.gtarot.top/assets/images/';
 
         let activeFolder = null;
 
+        // 初始化
         function init() {
             renderNav();
+            initResizer();
+            loadWidthFromStorage();
         }
 
+        // 渲染导航
         function renderNav() {
             const nav = document.getElementById('navTree');
             nav.innerHTML = '';
@@ -185,6 +238,7 @@
             });
         }
 
+        // 切换文件夹
         function toggleFolder(folder, el) {
             document.querySelectorAll('.nav-folder').forEach(f => {
                 if (f !== el) {
@@ -212,6 +266,7 @@
             }
         }
 
+        // 加载文件
         async function loadFile(file, el) {
             document.querySelectorAll('.nav-file').forEach(f => f.classList.remove('active'));
             el.classList.add('active');
@@ -229,6 +284,7 @@
             }
         }
 
+        // Markdown 解析
         function parseMarkdown(md) {
             let html = md;
             html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
@@ -244,10 +300,58 @@
             html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
             html = html.replace(/\n\n/g, '</p><p>');
             html = '<p>' + html + '</p>';
-            html = html.replace(/<p><(h[1-6]|ul|pre)/g, '<$1');
-            html = html.replace(/<(\/h[1-6]|\/ul|\/pre)><\/p>/g, '</$1>');
+            html = html.replace(/<p><(h[1-6]|ul|pre|table)/g, '<$1');
+            html = html.replace(/<(\/h[1-6]|\/ul|\/pre|\/table)><\/p>/g, '</$1>');
             html = html.replace(/<p><\/p>/g, '');
             return html;
+        }
+
+        // 初始化拖拽调整器
+        function initResizer() {
+            const resizer = document.getElementById('resizer');
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            let isResizing = false;
+
+            resizer.addEventListener('mousedown', (e) => {
+                isResizing = true;
+                resizer.classList.add('resizing');
+                document.body.style.cursor = 'col-resize';
+                document.body.style.userSelect = 'none';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isResizing) return;
+                let newWidth = e.clientX;
+                if (newWidth < 180) newWidth = 180;
+                if (newWidth > 400) newWidth = 400;
+                document.documentElement.style.setProperty('--sidebar-width', newWidth + 'px');
+                resizer.style.left = newWidth + 'px';
+                mainContent.style.marginLeft = newWidth + 'px';
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isResizing) {
+                    isResizing = false;
+                    resizer.classList.remove('resizing');
+                    document.body.style.cursor = '';
+                    document.body.style.userSelect = '';
+                    const currentWidth = getComputedStyle(document.documentElement).getPropertyValue('--sidebar-width').trim();
+                    localStorage.setItem('sidebarWidth', currentWidth);
+                }
+            });
+        }
+
+        // 从本地存储加载宽度
+        function loadWidthFromStorage() {
+            const savedWidth = localStorage.getItem('sidebarWidth');
+            if (savedWidth) {
+                document.documentElement.style.setProperty('--sidebar-width', savedWidth);
+                const resizer = document.getElementById('resizer');
+                const mainContent = document.getElementById('mainContent');
+                resizer.style.left = savedWidth;
+                mainContent.style.marginLeft = savedWidth;
+            }
         }
 
         init();
