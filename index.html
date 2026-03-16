@@ -191,17 +191,31 @@
     </div>
 
     <script>
-        // 文档结构
-        const DOCS = {"folders":[{"name":"docs","displayName":"文档","files":[{"name":"欢迎.md","displayName":"欢迎","path":"docs/欢迎.md"}]}]};
+        // 文档结构（从 structure.json 动态加载）
+        let DOCS = { folders: [] };
         const IMAGE_BASE = 'https://book.gtarot.top/assets/images/';
 
         let activeFolder = null;
 
         // 初始化
-        function init() {
+        async function init() {
+            await loadStructure();
             renderNav();
             initResizer();
             loadWidthFromStorage();
+        }
+
+        // 加载文档结构
+        async function loadStructure() {
+            try {
+                const res = await fetch('docs/structure.json');
+                if (res.ok) {
+                    const data = await res.json();
+                    DOCS.folders = data.docs || [];
+                }
+            } catch (e) {
+                console.log('加载 structure.json 失败:', e);
+            }
         }
 
         // 渲染导航
