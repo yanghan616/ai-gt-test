@@ -289,8 +289,8 @@
             content.innerHTML = '<p>加载中...</p>';
 
             try {
-                // 对路径进行 URL 编码，支持中文字符
-                const encodedPath = file.path.split('/').map(encodeURIComponent).join('/');
+                // 对路径进行 URL 编码，支持中文字符，并添加 docs/ 前缀
+                const encodedPath = 'docs/' + file.path.split('/').map(encodeURIComponent).join('/');
                 const res = await fetch(encodedPath);
                 if (!res.ok) throw new Error('加载失败：' + res.status);
                 const md = await res.text();
