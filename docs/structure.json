@@ -3,71 +3,111 @@
     {
       "name": "getting-started",
       "displayName": "📖 入门指南",
-      "fileCount": 1,
-      "totalWords": 380,
+      "fileCount": 2,
+      "totalWords": 500,
       "lastUpdated": "2026-03-16",
       "files": [
         {
           "name": "welcome.md",
           "displayName": "欢迎",
           "path": "getting-started/welcome.md"
+        },
+        {
+          "name": "测试.md",
+          "displayName": "测试文档",
+          "path": "getting-started/测试.md"
         }
       ]
     },
     {
       "name": "Sys 备忘",
       "displayName": "📋 Sys 备忘",
-      "fileCount": 1,
-      "totalWords": 0,
+      "fileCount": 2,
+      "totalWords": 400,
       "lastUpdated": "2026-03-16",
       "files": [
         {
           "name": "图床链接.md",
           "displayName": "图床链接",
           "path": "Sys 备忘/图床链接.md"
+        },
+        {
+          "name": "测试.md",
+          "displayName": "测试文档",
+          "path": "Sys 备忘/测试.md"
         }
       ]
     },
     {
       "name": "basic-theory",
       "displayName": "🔮 基础理论",
-      "fileCount": 0,
-      "totalWords": 0,
-      "lastUpdated": "-",
-      "files": []
+      "fileCount": 1,
+      "totalWords": 200,
+      "lastUpdated": "2026-03-16",
+      "files": [
+        {
+          "name": "测试.md",
+          "displayName": "测试文档",
+          "path": "basic-theory/测试.md"
+        }
+      ]
     },
     {
       "name": "card-meanings",
       "displayName": "🃏 牌义解读",
-      "fileCount": 0,
-      "totalWords": 0,
-      "lastUpdated": "-",
-      "files": []
+      "fileCount": 1,
+      "totalWords": 200,
+      "lastUpdated": "2026-03-16",
+      "files": [
+        {
+          "name": "测试.md",
+          "displayName": "测试文档",
+          "path": "card-meanings/测试.md"
+        }
+      ]
     },
     {
       "name": "techniques",
       "displayName": "⚡ 技法教程",
-      "fileCount": 0,
-      "totalWords": 0,
-      "lastUpdated": "-",
-      "files": []
+      "fileCount": 1,
+      "totalWords": 200,
+      "lastUpdated": "2026-03-16",
+      "files": [
+        {
+          "name": "测试.md",
+          "displayName": "测试文档",
+          "path": "techniques/测试.md"
+        }
+      ]
     },
     {
       "name": "case-studies",
       "displayName": "📝 案例分析",
-      "fileCount": 0,
-      "totalWords": 0,
-      "lastUpdated": "-",
-      "files": []
+      "fileCount": 1,
+      "totalWords": 200,
+      "lastUpdated": "2026-03-16",
+      "files": [
+        {
+          "name": "测试.md",
+          "displayName": "测试文档",
+          "path": "case-studies/测试.md"
+        }
+      ]
     },
     {
       "name": "course-materials",
       "displayName": "🎓 课程资料",
-      "fileCount": 0,
-      "totalWords": 0,
-      "lastUpdated": "-",
-      "files": []
+      "fileCount": 1,
+      "totalWords": 200,
+      "lastUpdated": "2026-03-16",
+      "files": [
+        {
+          "name": "测试.md",
+          "displayName": "测试文档",
+          "path": "course-materials/测试.md"
+        }
+      ]
     }
   ],
-  "lastBuild": "2026-03-16T16:06:00+08:00"
+  "lastBuild": "2026-03-16T16:13:00+08:00"
 }
