@@ -289,8 +289,10 @@
             content.innerHTML = '<p>加载中...</p>';
 
             try {
-                const res = await fetch(file.path);
-                if (!res.ok) throw new Error('加载失败');
+                // 对路径进行 URL 编码，支持中文字符
+                const encodedPath = file.path.split('/').map(encodeURIComponent).join('/');
+                const res = await fetch(encodedPath);
+                if (!res.ok) throw new Error('加载失败：' + res.status);
                 const md = await res.text();
                 content.innerHTML = `<div class="markdown-body">${parseMarkdown(md)}</div>`;
             } catch (e) {
